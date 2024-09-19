@@ -1,10 +1,14 @@
 doctype html
 html
   head
-    title Rickroll Generator
-    link(rel='stylesheet', href='/css/style.css')
+    title Rick Roll Generator
+    link(rel='stylesheet', href='/styles.css')
   body
-    h1 Enter a message or link below
-    form(action='/generate', method='POST')
-      input(type='text', name='message', placeholder='Enter your message or link', required)
-      button(type='submit') Generate Rickroll Link
+    h1  Rick Roll Generator
+    .form-container
+      form(action='/generate', method='post')
+        label(for='title') Title:
+        input(type='text', id='title', name='title', placeholder='Enter the title here', required)
+        label(for='description') Description:
+        textarea(id='description', name='description', placeholder='Enter the description here', required)
+        button(type='submit') Generate URL

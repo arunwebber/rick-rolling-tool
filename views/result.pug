@@ -1,26 +1,32 @@
 doctype html
 html
   head
-    title Rickroll Result
-    link(rel='stylesheet', href='/css/style.css')
+    title Rick Roll Result
+    link(rel='stylesheet', href='/styles.css')
     script.
-      function copyToClipboard() {
-        var message = "#{message}";
-        var rickrollUrl = "#{rickrollUrl}";
-        var hyperlink = `<a href="${rickrollUrl}" target="_blank">${message}</a>`;
-        
-        var tempInput = document.createElement('input');
-        tempInput.value = hyperlink;
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        document.execCommand('copy');
-        document.body.removeChild(tempInput);
-        alert("Copied the hyperlink: " + hyperlink);
+      function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function() {
+          alert('URL copied to clipboard!');
+        }, function(err) {
+          alert('Failed to copy URL: ', err);
+        });
       }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const copyButton = document.getElementById('copyUrlButton');
+        if (copyButton) {
+          copyButton.addEventListener('click', function() {
+            const url = document.getElementById('shortUrl').textContent.trim();
+            copyToClipboard(url);
+          });
+        }
+      });
   body
-    h1 Your Rickroll link is ready!
-    p Your message will be a clickable link:
-    p 
-      a(href=rickrollUrl target="_blank") #{message}
-    br
-    button(onclick="copyToClipboard()") Copy Hyperlink
+    h1 Rick Roll URL.
+    .content-container
+      p#shortUrlContainer
+        | Here is your rick roll url share it with your victum:
+        a(href=shortUrl, id='shortUrl') #{shortUrl}
+      button#copyUrlButton Copy URL
+      br
+      a(href="/") Back to Home

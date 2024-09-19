@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title #{title}
+    link(rel='stylesheet', href='/styles.css')
+  body
+    h2 You are a victim of Rick Rolling!
+    h1 #{title}
+    .content-container
+      p #{description}
+      // Embed the Rickroll video with autoplay enabled
+      iframe(width='560', height='315', src='https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1', frameborder='0', allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture', allowfullscreen)
+    a(href="/") Generate One For Your Friend
