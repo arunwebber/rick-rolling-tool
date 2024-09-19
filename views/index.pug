@@ -1,0 +1,10 @@
+doctype html
+html
+  head
+    title Rickroll Generator
+    link(rel='stylesheet', href='/css/style.css')
+  body
+    h1 Enter a message or link below
+    form(action='/generate', method='POST')
+      input(type='text', name='message', placeholder='Enter your message or link', required)
+      button(type='submit') Generate Rickroll Link
